@@ -39,6 +39,18 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
+    public Patient updatePatient(Long id, Patient patient) {
+        Patient existing = repository.findById(id).
+                orElseThrow(()-> new PatientNotFoundException(id));
+
+        existing.setFullName(patient.getFullName());
+        existing.setPhone(patient.getPhone());
+        existing.setEmail(patient.getEmail());
+
+        return repository.save(existing);
+    }
+
+    @Override
     public void deletePatient(Long id) {
         if (repository.findById(id).isEmpty()){
             throw new PatientNotFoundException(id);

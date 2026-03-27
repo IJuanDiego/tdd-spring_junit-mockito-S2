@@ -34,6 +34,11 @@ public class PatientController {
                 .body(service.registerPatient(patient));
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<Patient> update(@PathVariable Long id, @RequestBody Patient patient){
+        return ResponseEntity.ok(service.updatePatient(id, patient));
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id){
         service.deletePatient(id);

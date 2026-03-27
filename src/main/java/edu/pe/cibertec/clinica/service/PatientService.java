@@ -8,5 +8,6 @@ public interface PatientService {
     List<Patient> getAllPatients();
     Patient getPatientById(Long id);
     Patient registerPatient(Patient patient);
+    Patient updatePatient(Long id, Patient patient);
     void deletePatient (Long id);
 }
